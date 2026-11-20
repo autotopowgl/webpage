@@ -1,0 +1,35 @@
+---
+const titulo = 'Flujo de operación: plano DXF/CSV, trazado autónomo a 8 mm y monitoreo en vivo';
+---
+<svg viewBox="0 0 600 140" role="img" aria-label={titulo} class="flujo">
+  <title>{titulo}</title>
+  <g font-family="inherit" fill="currentColor">
+    <rect x="10" y="30" width="150" height="80" rx="10" fill="var(--c-surface)" stroke="currentColor" stroke-width="2" />
+    <path d="M40 50h40l14 14v30H40z" fill="none" stroke="var(--c-data)" stroke-width="2" />
+    <text x="122" y="68" font-size="13" font-weight="700" text-anchor="middle">DXF</text>
+    <text x="122" y="88" font-size="13" font-weight="700" text-anchor="middle">CSV</text>
+
+    <path d="M168 70h52" stroke="var(--c-accent)" stroke-width="3" />
+    <path d="M214 62l10 8-10 8" fill="none" stroke="var(--c-accent)" stroke-width="3" />
+
+    <rect x="228" y="30" width="150" height="80" rx="10" fill="var(--c-surface)" stroke="currentColor" stroke-width="2" />
+    <rect x="258" y="58" width="60" height="24" rx="5" fill="none" stroke="currentColor" stroke-width="2" />
+    <circle cx="270" cy="88" r="7" fill="none" stroke="currentColor" stroke-width="2" />
+    <circle cx="306" cy="88" r="7" fill="none" stroke="currentColor" stroke-width="2" />
+    <line x1="288" y1="58" x2="288" y2="44" stroke="currentColor" stroke-width="2" />
+    <circle cx="288" cy="42" r="3" fill="var(--c-data)" />
+    <circle cx="340" cy="94" r="5" fill="var(--c-accent)" />
+    <text x="345" y="70" font-size="13" font-weight="700" text-anchor="middle">8 mm</text>
+
+    <path d="M386 70h52" stroke="var(--c-accent)" stroke-width="3" />
+    <path d="M432 62l10 8-10 8" fill="none" stroke="var(--c-accent)" stroke-width="3" />
+
+    <rect x="446" y="30" width="144" height="80" rx="10" fill="var(--c-surface)" stroke="currentColor" stroke-width="2" />
+    <rect x="462" y="44" width="72" height="50" rx="4" fill="none" stroke="currentColor" stroke-width="2" />
+    <path d="M470 84l14-14 12 8 16-20 14 10" fill="none" stroke="var(--c-data)" stroke-width="2.5" />
+    <text x="562" y="74" font-size="12" font-weight="700" text-anchor="middle">SaaS</text>
+  </g>
+</svg>
+<style>
+  .flujo { width: 100%; height: auto; color: var(--c-text); }
+</style>

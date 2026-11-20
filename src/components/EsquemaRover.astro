@@ -1,0 +1,56 @@
+---
+// Esquema de bloques funcionales de alto nivel (requisito de PI: sin circuitos ni piezas internas).
+interface Props { titulo?: string }
+const { titulo = 'Esquema del rover AutoTopo: antena RTK, unidad de control y marcador sobre terreno con puntos replanteados' } = Astro.props;
+---
+<svg viewBox="0 0 400 260" role="img" aria-label={titulo} class="esquema">
+  <title>{titulo}</title>
+  <defs>
+    <pattern id="grid-r" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M20 0H0V20" fill="none" stroke="currentColor" stroke-opacity="0.07" />
+    </pattern>
+  </defs>
+  <rect width="400" height="260" fill="url(#grid-r)" />
+  <!-- sol -->
+  <circle cx="345" cy="45" r="18" fill="var(--c-accent)" opacity="0.9" />
+  <g stroke="var(--c-accent)" stroke-width="2" opacity="0.6">
+    <path d="M345 15v-8M345 83v-8M315 45h-8M383 45h-8M324 24l-6-6M366 66l6 6M366 24l6-6M324 66l-6 6" />
+  </g>
+  <!-- señal RTK -->
+  <g fill="none" stroke="var(--c-data)" stroke-width="2" stroke-linecap="round">
+    <path d="M150 48a22 22 0 0 1 30 0" opacity="0.9" />
+    <path d="M142 38a34 34 0 0 1 46 0" opacity="0.6" />
+    <path d="M134 28a46 46 0 0 1 62 0" opacity="0.35" />
+  </g>
+  <!-- mástil y antena -->
+  <line x1="165" y1="62" x2="165" y2="118" stroke="currentColor" stroke-width="3" />
+  <rect x="152" y="56" width="26" height="8" rx="3" fill="var(--c-data)" />
+  <!-- cuerpo -->
+  <rect x="95" y="118" width="170" height="52" rx="10" fill="var(--c-surface)" stroke="currentColor" stroke-width="2.5" />
+  <text x="180" y="149" text-anchor="middle" font-size="13" font-weight="700" fill="currentColor" font-family="inherit">AUTOTOPO · ROS</text>
+  <!-- brazo marcador -->
+  <path d="M265 150h28v38" fill="none" stroke="currentColor" stroke-width="3" />
+  <rect x="285" y="186" width="16" height="14" rx="3" fill="var(--c-accent)" />
+  <line x1="293" y1="200" x2="293" y2="214" stroke="var(--c-accent)" stroke-width="2" stroke-dasharray="3 3" />
+  <!-- ruedas -->
+  <g fill="var(--c-bg)" stroke="currentColor" stroke-width="3">
+    <circle cx="125" cy="188" r="20" /><circle cx="235" cy="188" r="20" />
+  </g>
+  <g fill="currentColor"><circle cx="125" cy="188" r="5" /><circle cx="235" cy="188" r="5" /></g>
+  <!-- terreno + puntos -->
+  <path d="M10 214 Q 80 206 150 210 T 290 212 T 390 208" fill="none" stroke="currentColor" stroke-opacity="0.5" stroke-width="2" />
+  <g fill="var(--c-accent)">
+    <circle cx="293" cy="214" r="5" /><circle cx="333" cy="212" r="4" opacity="0.5" /><circle cx="373" cy="209" r="4" opacity="0.5" />
+  </g>
+  <g fill="var(--c-data)"><circle cx="40" cy="211" r="4" /><circle cx="80" cy="208" r="4" /></g>
+  <!-- rótulos -->
+  <g font-size="11" fill="currentColor" font-family="inherit" opacity="0.85">
+    <text x="190" y="40">Tri-GPS / RTK · 8 mm</text>
+    <text x="300" y="240" text-anchor="middle">Marcaje pintura / láser</text>
+    <text x="60" y="240" text-anchor="middle">Puntos replanteados</text>
+  </g>
+</svg>
+
+<style>
+  .esquema { width: 100%; height: auto; color: var(--c-text); }
+</style>

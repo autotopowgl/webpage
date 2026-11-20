@@ -1,0 +1,239 @@
+---
+import Layout from '../components/Layout.astro';
+import Media from '../components/Media.astro';
+import Contacto from '../components/Contacto.astro';
+import { contenido } from '../lib/contenido';
+
+const { marca, cifras, ignite, equipo, videos, problema, tecnologia } = contenido;
+const maxMercado = Math.max(...ignite.mercado.map((m) => m.millones));
+// Escala de raíz cuadrada (área): con escala lineal el SOM (12M) sería invisible frente al TAM (1.500M).
+const ancho = (v: number) => Math.max(6, Math.round(Math.sqrt(v / maxMercado) * 100));
+---
+<Layout
+  titulo={`${marca.nombre} · Postulación Start-Up Chile Ignite`}
+  descripcion={`${ignite.tesis} Presentación del proyecto AutoTopo para Start-Up Chile Ignite / CORFO.`}
+  ruta="/ignite/"
+>
+  <!-- TESIS -->
+  <section class="tesis" aria-labelledby="tesis-titulo" data-testid="tesis">
+    <div class="container">
+      <a href="/" class="volver" data-testid="link-home">← Volver a {marca.nombre}</a>
+      <span class="eyebrow">Start-Up Chile Ignite · CORFO</span>
+      <h1 id="tesis-titulo">{ignite.tesis}</h1>
+      <p class="tesis__pitch">{marca.pitch7}</p>
+      <div class="tesis__badges">
+        <span class="badge" data-testid="badge-trl">{cifras.trl} · prototipo funcional</span>
+        <span class="badge badge--accent">Female-led</span>
+        <span class="badge badge--accent">RaaS + SaaS</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ESTADO -->
+  <section class="section section--alt" aria-labelledby="estado-titulo" data-seccion="estado">
+    <div class="container">
+      <span class="eyebrow">Dónde estamos hoy</span>
+      <h2 id="estado-titulo">Estado actual</h2>
+      <ul class="grid grid--2 estado">
+        {ignite.estado.map((e) => (
+          <li class="card"><strong class="estado__cifra">{e.cifra}</strong><p class="muted">{e.texto}</p></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- PROBLEMA / SOLUCION -->
+  <section class="section" aria-labelledby="ps-titulo" data-seccion="problema-solucion">
+    <div class="container">
+      <span class="eyebrow">Problema y solución</span>
+      <h2 id="ps-titulo">{problema.titulo}</h2>
+      <div class="grid grid--2">
+        <div class="card">
+          <h3>El problema</h3>
+          <p class="muted">{problema.bajada}</p>
+          <ul class="lista">
+            {problema.items.map((i) => <li><strong>{i.cifra}</strong> {i.texto}</li>)}
+          </ul>
+        </div>
+        <div class="card card--accent">
+          <h3>La solución</h3>
+          <p class="muted">{marca.descripcion}</p>
+          <ul class="lista">
+            {tecnologia.items.map((t) => <li><strong>{t.titulo}:</strong> {t.texto}</li>)}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPETENCIA -->
+  <section class="section section--alt" aria-labelledby="comp-titulo" data-seccion="competencia">
+    <div class="container">
+      <span class="eyebrow">Diferenciación</span>
+      <h2 id="comp-titulo">Competencia y alternativas</h2>
+      <ul class="grid grid--3 competencia" data-testid="competencia">
+        {ignite.competencia.map((c) => (
+          <li class="card">
+            <span class="badge badge--accent">{c.tipo}</span>
+            <h3 class="competencia__nombre">{c.nombre}</h3>
+            <p class="muted">{c.ventaja}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- MERCADO -->
+  <section class="section" aria-labelledby="mer-titulo" data-seccion="mercado">
+    <div class="container">
+      <span class="eyebrow">Mercado</span>
+      <h2 id="mer-titulo">Tamaño de mercado</h2>
+      <ul class="mercado" data-testid="mercado">
+        {ignite.mercado.map((m) => (
+          <li class="mercado__fila">
+            <div class="mercado__head"><strong>{m.sigla}</strong><span class="mercado__valor">{m.valor}</span></div>
+            <div class="mercado__track"><div class="mercado__barra" data-sigla={m.sigla} style={`width:${ancho(m.millones)}%`}></div></div>
+            <p class="muted">{m.texto}</p>
+          </li>
+        ))}
+      </ul>
+      <p class="nota muted">Barras en escala de área (raíz cuadrada) para que las tres magnitudes sean comparables.</p>
+    </div>
+  </section>
+
+  <!-- HOJA DE RUTA -->
+  <section class="section section--sand" aria-labelledby="ruta-titulo" data-seccion="hoja-ruta">
+    <div class="container">
+      <span class="eyebrow">Hoja de ruta</span>
+      <h2 id="ruta-titulo">De prototipo funcional a flota regional</h2>
+      <ol class="ruta">
+        {ignite.hojaRuta.map((h, i) => (
+          <li class={`ruta__hito ${i === 0 ? 'ruta__hito--hoy' : ''}`}>
+            <span class="ruta__periodo">{h.periodo} · {h.lugar}</span>
+            <strong class="ruta__trl">{h.hito}</strong>
+            <p class="muted">{h.texto}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- PROGRAMA: ACTIVIDADES Y KPIS -->
+  <section class="section" aria-labelledby="prog-titulo" data-seccion="programa">
+    <div class="container">
+      <span class="eyebrow">Plan durante Ignite</span>
+      <h2 id="prog-titulo">Actividades y resultados comprometidos</h2>
+      <div class="grid grid--2 programa">
+        <div>
+          <h3>Actividades</h3>
+          <ul class="actividades">
+            {ignite.actividades.map((a) => <li><strong>{a.titulo}</strong><p class="muted">{a.texto}</p></li>)}
+          </ul>
+        </div>
+        <div>
+          <h3>KPIs al cierre del programa</h3>
+          <ol class="kpis" data-testid="kpis">
+            {ignite.kpis.map((k) => (
+              <li class="card kpi"><span class="badge">{k.area}</span><p data-testid="kpi-texto">{k.texto}</p></li>
+            ))}
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ECOSISTEMA + MODELO -->
+  <section class="section section--alt" aria-labelledby="eco-titulo" data-seccion="ecosistema">
+    <div class="container">
+      <span class="eyebrow">Aporte a Chile</span>
+      <h2 id="eco-titulo">Contribución al ecosistema de innovación chileno</h2>
+      <ul class="grid grid--2 eco">
+        {ignite.ecosistema.map((e) => <li class="card"><h3>{e.titulo}</h3><p class="muted">{e.texto}</p></li>)}
+      </ul>
+      <h2 id="modelo-titulo" class="modelo__titulo">Modelo escalable</h2>
+      <ul class="grid grid--3" data-testid="modelo">
+        {ignite.modelo.map((m) => <li class="card"><h3>{m.titulo}</h3><p class="muted">{m.texto}</p></li>)}
+      </ul>
+    </div>
+  </section>
+
+  <!-- EQUIPO + VIDEOS -->
+  <section class="section" aria-labelledby="eqv-titulo" data-seccion="equipo-videos">
+    <div class="container">
+      <span class="eyebrow">Equipo</span>
+      <h2 id="eqv-titulo">{equipo.titulo} <span class="badge badge--accent">Female-led</span></h2>
+      <ul class="grid grid--3 equipo">
+        {equipo.personas.map((p) => (
+          <li class="card persona"><span class="persona__avatar" aria-hidden="true">{p.iniciales}</span><div><h3>{p.nombre}</h3><p class="muted">{p.rol}</p></div></li>
+        ))}
+      </ul>
+      <div class="grid grid--2 videos">
+        <div>
+          <h3>Video pitch (90 s)</h3>
+          <Media src={videos.pitch} alt="Video pitch de AutoTopo" esquema="ninguno" avisoVideo="El pitch del equipo fundador se publicará aquí." />
+        </div>
+        <div>
+          <h3>Demostración del MVP (120 s)</h3>
+          <Media src={videos.mvp} alt="Demostración funcional del rover AutoTopo" esquema="ninguno" avisoVideo="La demostración en terreno del rover se publicará aquí." />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Contacto
+    contexto="ignite"
+    titulo="Conversemos"
+    bajada="Para consultas sobre la postulación, el proyecto o una visita técnica al prototipo."
+    cta="Contactar al equipo fundador"
+  />
+</Layout>
+
+<style>
+  .tesis { padding-block: var(--sp-5) var(--sp-7); background: radial-gradient(100% 70% at 0% 0%, rgba(61, 220, 151, 0.12), transparent 60%), var(--c-bg); }
+  .volver { display: block; width: fit-content; margin-bottom: var(--sp-4); font-size: var(--fs-sm); text-decoration: none; }
+  .tesis h1 { font-size: var(--fs-hero); max-width: 22ch; }
+  .tesis__pitch { color: var(--c-text-muted); font-size: var(--fs-lg); }
+  .tesis__badges { display: flex; flex-wrap: wrap; gap: var(--sp-2); }
+
+  .estado, .competencia, .eco, .equipo, .kpis, .actividades { list-style: none; padding: 0; margin: 0; }
+  .estado__cifra { display: block; font-size: var(--fs-xl); color: var(--c-data); line-height: 1.2; margin-bottom: var(--sp-1); overflow-wrap: anywhere; }
+  .card--accent { border-color: rgba(245, 166, 35, 0.5); }
+  .lista { padding-left: 1.1em; margin: 0; font-size: var(--fs-sm); display: grid; gap: var(--sp-2); }
+  .competencia__nombre { margin-top: var(--sp-3); }
+
+  .mercado { list-style: none; padding: 0; margin: var(--sp-5) 0 0; display: grid; gap: var(--sp-5); }
+  .mercado__head { display: flex; justify-content: space-between; align-items: baseline; gap: var(--sp-3); }
+  .mercado__valor { font-size: var(--fs-xl); font-weight: 800; color: var(--c-accent-strong); }
+  .mercado__track { height: 18px; background: var(--c-bg-alt); border-radius: 999px; margin-block: var(--sp-2); overflow: hidden; border: 1px solid var(--c-border); }
+  .mercado__barra { height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--c-accent), var(--c-data)); }
+  .mercado__fila p { margin: 0; font-size: var(--fs-sm); }
+  .nota { font-size: var(--fs-xs); margin-top: var(--sp-4); }
+
+  .ruta { list-style: none; padding: 0; margin: var(--sp-5) 0 0; display: grid; gap: var(--sp-4); position: relative; }
+  .ruta__hito { position: relative; padding: var(--sp-4) var(--sp-4) var(--sp-4) var(--sp-6); background: #fffaf2; border: 1px solid #e3d8c5; border-radius: var(--radius); }
+  .ruta__hito::before { content: ''; position: absolute; left: 14px; top: 22px; width: 12px; height: 12px; border-radius: 50%; background: #cbbfa9; }
+  .ruta__hito--hoy::before { background: var(--c-accent); box-shadow: 0 0 0 4px rgba(245, 166, 35, 0.3); }
+  .ruta__periodo { display: block; font-size: var(--fs-xs); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #7f4f00; }
+  .ruta__trl { display: block; font-size: var(--fs-lg); margin-block: var(--sp-1); }
+  .ruta__hito p { margin: 0; font-size: var(--fs-sm); }
+  @media (min-width: 900px) { .ruta { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+
+  .programa { gap: var(--sp-6); }
+  .actividades { display: grid; gap: var(--sp-4); }
+  .actividades li { border-left: 3px solid var(--c-accent); padding-left: var(--sp-4); }
+  .actividades p { margin: var(--sp-1) 0 0; font-size: var(--fs-sm); }
+  .kpis { display: grid; gap: var(--sp-3); }
+  .kpi p { margin: var(--sp-2) 0 0; }
+
+  .modelo__titulo { margin-top: var(--sp-7); }
+  .eco h3, [data-testid='modelo'] h3 { font-size: var(--fs-md); }
+  [data-testid='modelo'] { list-style: none; padding: 0; margin: 0; }
+
+  .equipo { margin-bottom: var(--sp-6); }
+  .persona { display: flex; gap: var(--sp-4); align-items: center; }
+  .persona h3 { margin: 0; font-size: var(--fs-md); }
+  .persona p { margin: 0; font-size: var(--fs-sm); }
+  .persona__avatar { flex: none; width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; font-weight: 800; background: linear-gradient(135deg, var(--c-accent), #e07b00); color: var(--c-accent-ink); }
+  h2 .badge { vertical-align: middle; margin-left: var(--sp-2); }
+  .videos h3 { font-size: var(--fs-md); }
+</style>
