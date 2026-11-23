@@ -2,7 +2,7 @@
   "marca": {
     "nombre": "AutoTopo",
     "dominio": "https://www.wrover.cl",
-    "pitch7": "Robótica autónoma de precisión para replanteo topográfico masivo.",
+    "lema": "Robótica autónoma de precisión para replanteo topográfico masivo.",
     "descripcion": "AutoTopo desarrolla un rover autónomo de precisión milimétrica para el replanteo topográfico en parques solares. Marca más de 1.000 puntos diarios con mínimo personal, reduce costos y protege a los trabajadores de la radiación extrema del desierto."
   },
   "cifras": {
@@ -14,9 +14,6 @@
     "capexDetalle": "0% CAPEX: servicio 100% OPEX",
     "puntosPor100MW": "50.000+",
     "cuadrilla": "6 a 9",
-    "trl": "TRL 6",
-    "trlMeta": "TRL 8",
-    "idInversion": "USD 50.000 – 60.000",
     "supervision": "1 operador : 3–5 rovers",
     "proteccion": "IP65 / IP67"
   },
@@ -24,7 +21,7 @@
     "whatsapp": "56957096817",
     "correo": "contacto@autotopo.cl",
     "mensajePiloto": "Hola AutoTopo, me interesa evaluar un piloto de replanteo autónomo en nuestra faena solar.",
-    "mensajeIgnite": "Hola equipo AutoTopo, los contacto en relación con su postulación a Start-Up Chile Ignite."
+    "asuntoCorreo": "AutoTopo · Piloto en faena"
   },
   "hero": {
     "titulo": "Precisión robótica de 8 mm para el replanteo de parques solares. Sin comprar maquinaria.",
@@ -35,107 +32,139 @@
     "titulo": "El replanteo manual es el cuello de botella de la construcción solar",
     "bajada": "Cada punto de hincado se marca hoy a pie, uno por uno, bajo radiación extrema. Es lento, caro y propenso a errores que obligan a rehacer trabajo.",
     "items": [
-      { "cifra": "50.000+", "texto": "puntos de replanteo por cada 100 MW instalados" },
-      { "cifra": "6 a 9", "texto": "personas por cuadrilla marcando punto a punto a pie" },
-      { "cifra": "UV extremo", "texto": "exposición diaria a radiación y estrés térmico en el desierto" }
+      {
+        "cifra": "50.000+",
+        "texto": "puntos de replanteo por cada 100 MW instalados"
+      },
+      {
+        "cifra": "6 a 9",
+        "texto": "personas por cuadrilla marcando punto a punto a pie"
+      },
+      {
+        "cifra": "UV extremo",
+        "texto": "exposición diaria a radiación y estrés térmico en el desierto"
+      }
     ]
   },
   "pasos": [
-    { "titulo": "Carga del plano", "texto": "Recibimos el layout del parque en DXF o CSV y lo convertimos en una ruta de puntos a replantear." },
-    { "titulo": "Trazado autónomo", "texto": "El rover navega con Tri-GPS/RTK y marca cada punto con 8 mm de precisión, con pintura industrial o láser." },
-    { "titulo": "Monitoreo en vivo", "texto": "La plataforma muestra el avance, los puntos marcados y los reportes de cada jornada." }
+    {
+      "titulo": "Carga del plano",
+      "texto": "Recibimos el layout del parque en DXF o CSV y lo convertimos en una ruta de puntos a replantear."
+    },
+    {
+      "titulo": "Trazado autónomo",
+      "texto": "El rover navega con Tri-GPS/RTK y marca cada punto con 8 mm de precisión, con pintura industrial o láser."
+    },
+    {
+      "titulo": "Monitoreo en vivo",
+      "texto": "La plataforma muestra el avance, los puntos marcados y los reportes de cada jornada."
+    }
   ],
   "comparacion": {
     "titulo": "Cuadrilla manual vs AutoTopo RaaS",
     "filas": [
-      { "criterio": "Modelo de costo", "manual": "Planilla de cuadrilla y subcontratos", "autotopo": "Tarifa mensual o por punto/MW: 0% CAPEX, 100% OPEX" },
-      { "criterio": "Personal expuesto al sol", "manual": "6 a 9 personas a pie", "autotopo": "1 operador supervisando 3 a 5 rovers" },
-      { "criterio": "Precisión", "manual": "Variable, depende de la fatiga", "autotopo": "8 mm RTK, constante todo el día" },
-      { "criterio": "Rendimiento", "manual": "Punto a punto, a ritmo humano", "autotopo": "Más de 1.000 puntos por día y por rover" },
-      { "criterio": "Qué incluye", "manual": "Solo mano de obra", "autotopo": "Rover, calibración, repuestos, pintura/láser, soporte y plataforma DXF/CSV" }
+      {
+        "criterio": "Modelo de costo",
+        "manual": "Planilla de cuadrilla y subcontratos",
+        "autotopo": "Tarifa mensual o por punto/MW: 0% CAPEX, 100% OPEX"
+      },
+      {
+        "criterio": "Personal expuesto al sol",
+        "manual": "6 a 9 personas a pie",
+        "autotopo": "1 operador supervisando 3 a 5 rovers"
+      },
+      {
+        "criterio": "Precisión",
+        "manual": "Variable, depende de la fatiga",
+        "autotopo": "8 mm RTK, constante todo el día"
+      },
+      {
+        "criterio": "Rendimiento",
+        "manual": "Punto a punto, a ritmo humano",
+        "autotopo": "Más de 1.000 puntos por día y por rover"
+      },
+      {
+        "criterio": "Qué incluye",
+        "manual": "Solo mano de obra",
+        "autotopo": "Rover, calibración, repuestos, pintura/láser, soporte y plataforma DXF/CSV"
+      }
     ]
   },
   "tecnologia": {
     "titulo": "Ingeniería robótica chilena para el desierto",
-    "bajada": "Un rover autónomo todoterreno, diseñado y construido por el equipo fundador.",
+    "bajada": "Un rover autónomo todoterreno, diseñado y construido en Chile por nuestro equipo.",
     "items": [
-      { "titulo": "Navegación ROS", "texto": "Arquitectura de control sobre Robot Operating System con fusión sensorial en tiempo real." },
-      { "titulo": "Tri-GPS / RTK", "texto": "Posicionamiento cinemático en tiempo real con 8 mm de precisión en terreno irregular." },
-      { "titulo": "Control de precisión", "texto": "Cinemática inversa y control PID para posicionar el marcador sobre cada punto." },
-      { "titulo": "Marcaje dual", "texto": "Pintura industrial o láser, según la etapa de la obra y los requisitos del cliente." },
-      { "titulo": "Robustez desértica", "texto": "Suspensión todoterreno y sellado IP65/IP67 contra polvo fino y calor extremo." }
+      {
+        "titulo": "Navegación ROS",
+        "texto": "Arquitectura de control sobre Robot Operating System con fusión sensorial en tiempo real."
+      },
+      {
+        "titulo": "Tri-GPS / RTK",
+        "texto": "Posicionamiento cinemático en tiempo real con 8 mm de precisión en terreno irregular."
+      },
+      {
+        "titulo": "Control de precisión",
+        "texto": "Cinemática inversa y control PID para posicionar el marcador sobre cada punto."
+      },
+      {
+        "titulo": "Marcaje dual",
+        "texto": "Pintura industrial o láser, según la etapa de la obra y los requisitos del cliente."
+      },
+      {
+        "titulo": "Robustez desértica",
+        "texto": "Suspensión todoterreno y sellado IP65/IP67 contra polvo fino y calor extremo."
+      }
     ]
   },
   "impacto": {
     "titulo": "Seguridad HSE y sostenibilidad",
     "bajada": "Sacar a las cuadrillas del calor extremo cumple metas HSE de las grandes eléctricas y acelera la transición a energías limpias.",
     "ods": [
-      { "numero": 3, "nombre": "Salud y bienestar" },
-      { "numero": 5, "nombre": "Igualdad de género" },
-      { "numero": 7, "nombre": "Energía asequible y no contaminante" },
-      { "numero": 9, "nombre": "Industria, innovación e infraestructura" },
-      { "numero": 13, "nombre": "Acción por el clima" }
+      {
+        "numero": 3,
+        "nombre": "Salud y bienestar"
+      },
+      {
+        "numero": 5,
+        "nombre": "Igualdad de género"
+      },
+      {
+        "numero": 7,
+        "nombre": "Energía asequible y no contaminante"
+      },
+      {
+        "numero": 9,
+        "nombre": "Industria, innovación e infraestructura"
+      },
+      {
+        "numero": 13,
+        "nombre": "Acción por el clima"
+      }
     ]
   },
   "equipo": {
-    "titulo": "Equipo fundador",
-    "bajada": "Empresa liderada por una mujer, con ingeniería propia en electrónica, mecánica y software autónomo.",
+    "titulo": "Nuestro equipo",
+    "bajada": "AutoTopo es una empresa chilena en formación, liderada por una mujer, con ingeniería propia en electrónica, mecánica y software autónomo.",
     "personas": [
-      { "nombre": "Loreto Oviedo", "rol": "Team Leader · Dirección comercial", "iniciales": "LO" },
-      { "nombre": "Wilson Puentes", "rol": "Electrónica y mecánica", "iniciales": "WP" },
-      { "nombre": "Gonzalo Oviedo Lambert", "rol": "Software autónomo ROS", "iniciales": "GO" }
-    ]
-  },
-  "ignite": {
-    "tesis": "Robótica autónoma de precisión para acelerar la construcción de energía solar en Latinoamérica.",
-    "estado": [
-      { "cifra": "TRL 6", "texto": "Prototipo funcional demostrado en terreno" },
-      { "cifra": "USD 50.000 – 60.000", "texto": "Invertidos en I+D por los fundadores" },
-      { "cifra": "1 rover", "texto": "Operativo: más de 1.000 puntos por día a 8 mm" },
-      { "cifra": "Pre-venta", "texto": "Interés de constructoras EPC para pilotos en faena" }
-    ],
-    "competencia": [
-      { "nombre": "Civ Robotics (EE. UU.)", "tipo": "Competidor directo", "ventaja": "Frente a su alto CAPEX y soporte remoto desde EE. UU., ofrecemos RaaS flexible, soporte local en LatAm y sellado IP65/IP67." },
-      { "nombre": "Dusty Robotics / HP SitePrint (EE. UU.)", "tipo": "Robótica adyacente", "ventaja": "Ellos trabajan en interiores de edificios en condiciones ideales. AutoTopo opera a cielo abierto, en terreno irregular y en el desierto." },
-      { "nombre": "Cuadrillas manuales", "tipo": "Sustituto principal", "ventaja": "Trazado masivo y repetitivo de más de 1.000 puntos diarios a 8 mm, sin fatiga ni errores humanos." }
-    ],
-    "mercado": [
-      { "sigla": "TAM", "valor": "USD 1.500M", "millones": 1500, "texto": "Topografía para construcción solar a nivel global" },
-      { "sigla": "SAM", "valor": "USD 320M", "millones": 320, "texto": "Constructoras solares en Latinoamérica" },
-      { "sigla": "SOM", "valor": "USD 12M", "millones": 12, "texto": "Captura proyectada a 3 años en Chile y Perú" }
-    ],
-    "hojaRuta": [
-      { "periodo": "Hoy", "hito": "TRL 6", "lugar": "Chile", "texto": "Prototipo funcional validado en terreno: navegación ROS, RTK 8 mm y marcaje dual." },
-      { "periodo": "Año 1", "hito": "TRL 8", "lugar": "Chile", "texto": "Sellado IP65/IP67 validado en Atacama, pilotos pagados y primeros contratos RaaS con constructoras EPC." },
-      { "periodo": "Año 2", "hito": "TRL 9", "lugar": "Perú", "texto": "Flota de 3 a 5 rovers, lanzamiento de la plataforma SaaS y entrada al sur de Perú mediante alianzas locales." },
-      { "periodo": "Año 3", "hito": "Escala", "lugar": "Latinoamérica", "texto": "Escalamiento de servicios RaaS con desarrolladores solares en Brasil y otros mercados fotovoltaicos de la región." }
-    ],
-    "actividades": [
-      { "titulo": "Producto (TRL 6 → 8)", "texto": "Completar el sellado desértico IP65/IP67, la gestión térmica y la optimización del marcaje dual." },
-      { "titulo": "Pilotos en terreno", "texto": "Ejecutar pilotos pagados en parques solares de Atacama con constructoras EPC para validar la precisión de 8 mm." },
-      { "titulo": "Tracción comercial", "texto": "Estructurar contratos recurrentes RaaS/SaaS y cerrar los primeros acuerdos B2B." },
-      { "titulo": "PI y constitución legal", "texto": "Constituir la SpA liderada por una mujer en Chile e iniciar el registro de patente o modelo de utilidad y la estrategia PCT." }
-    ],
-    "kpis": [
-      { "area": "Producto", "texto": "Avanzar de TRL 6 a TRL 8 con sellado IP65/IP67 validado en Atacama." },
-      { "area": "Comercial", "texto": "Ejecutar 2 pilotos pagados y cerrar 2 contratos recurrentes RaaS/SaaS con constructoras EPC." },
-      { "area": "Talento y PI", "texto": "Contratar 2 ingenieros especializados en Chile e iniciar el registro de PI." }
-    ],
-    "ecosistema": [
-      { "titulo": "Transferencia tecnológica", "texto": "Primer rover autónomo de replanteo solar en Chile, desplegado junto a constructoras EPC." },
-      { "titulo": "Talento", "texto": "Formación de ingenieros en ROS y robótica de campo, y creación de empleo calificado." },
-      { "titulo": "Liderazgo femenino", "texto": "Empresa liderada por una mujer en un sector industrial y tecnológico." },
-      { "titulo": "Exportación", "texto": "Servicios RaaS/SaaS desarrollados en Chile y exportables a Perú y Latinoamérica." }
-    ],
-    "modelo": [
-      { "titulo": "Servicio recurrente", "texto": "Cobro RaaS + SaaS por mes o por punto/MW trazado, sin venta de hardware." },
-      { "titulo": "Supervisión 1-a-N", "texto": "Un profesional opera de 3 a 5 rovers en paralelo y cubre la escasez de especialistas sin elevar los costos de forma lineal." },
-      { "titulo": "Rotación de flota", "texto": "Con el I+D base ya ejecutado, cada rover rota entre obras y replicar unidades cuesta una fracción del prototipo inicial." }
+      {
+        "nombre": "Loreto Oviedo",
+        "rol": "Dirección general y comercial",
+        "iniciales": "LO"
+      },
+      {
+        "nombre": "Wilson Puentes",
+        "rol": "Electrónica y mecánica",
+        "iniciales": "WP"
+      },
+      {
+        "nombre": "Gonzalo Oviedo Lambert",
+        "rol": "Software autónomo ROS",
+        "iniciales": "GO"
+      }
     ]
   },
   "videos": {
-    "pitch": "",
-    "mvp": ""
+    "demo": ""
   },
   "media": {
     "hero": "",

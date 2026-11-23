@@ -1,7 +1,7 @@
 # Sitio AutoTopo: guía de contenido
 
 Todo el texto y todas las cifras del sitio están en **un solo archivo**: `src/data/autotopo.json`.
-Las páginas (`/` y `/ignite/`) no tienen texto escrito a mano. Para cambiar una cifra o una frase, se edita el JSON y se vuelve a construir.
+El sitio es la web de la empresa (una sola página, `/`) y no tiene texto escrito a mano. Para cambiar una cifra o una frase, se edita el JSON y se vuelve a construir.
 
 ## Flujo de edición
 
@@ -20,13 +20,13 @@ npm test             # pruebas en celular (375x667) y escritorio (1440x900)
 
 | Campo del JSON | Dónde aparece |
 |---|---|
-| `cifras.*` | Hero, comparación, tecnología, `/ignite`. **Precisión siempre "8 mm".** |
+| `cifras.*` | Hero, problema y comparación. **Precisión siempre "8 mm".** |
 | `contacto.whatsapp` | Todos los botones de WhatsApp. Solo dígitos con código de país, sin `+` (ej. `569XXXXXXXX`). Mientras diga `PENDIENTE_WHATSAPP_COMERCIAL`, `npm run check` impide publicar. |
 | `contacto.correo` | Enlaces de correo (`mailto:`). |
-| `contacto.mensajePiloto` / `mensajeIgnite` | Mensaje precargado de WhatsApp desde la home y desde `/ignite`. |
+| `contacto.mensajePiloto` | Mensaje precargado de WhatsApp. |
+| `contacto.asuntoCorreo` | Asunto precargado del correo. |
 | `hero`, `problema`, `pasos`, `comparacion`, `tecnologia`, `impacto`, `equipo` | Secciones de la home. |
-| `ignite.*` | Página `/ignite`. |
-| `videos.pitch` / `videos.mvp` | URL pública de YouTube. Vacío = aviso "Video próximamente". |
+| `videos.demo` | URL pública de YouTube con la demostración del rover (sección Tecnología). Vacío = esquema ilustrado. |
 | `media.hero` / `media.tecnologia` | Ruta de una foto real (dentro de `public/`, ej. `/img/rover.jpg`) o una URL de YouTube. Vacío = esquema ilustrado. |
 
 ## Qué NO se publica nunca
@@ -37,12 +37,13 @@ Lo exige `specs/contenido-publico` y lo bloquea `npm run check`:
 - Distribución accionaria, pactos de socios, márgenes internos, deudas, valorización o financiamiento previo.
 - Detalles internos de la electrónica, sensores o mecanismos antes de presentar la solicitud ante INAPI.
 - Fotos de stock presentadas como si fueran el rover.
+- Referencias a postulaciones o fondos (Start-Up Chile, Ignite, CORFO, "postulación"): el sitio es la web de una empresa en formación, no un pitch.
 
 Los datos personales concretos que se bloquean están en `scripts/prohibidos.json`. Ese archivo no forma parte del sitio publicado.
 
 ## Inconsistencias del formulario CORFO que hay que corregir en Charly.io
 
-La web usa los valores canónicos. Estas respuestas del formulario (Start-Up Chile BIG13, ID 1123486) contradicen la web o se contradicen entre sí y conviene corregirlas antes de enviar:
+Esta sección es solo de uso interno (no se publica). La web usa los valores canónicos. Estas respuestas del formulario (Start-Up Chile BIG13, ID 1123486) contradicen la web o se contradicen entre sí y conviene corregirlas antes de enviar:
 
 | # | Sección / pregunta | Problema | Corrección sugerida |
 |---|---|---|---|

@@ -29,7 +29,7 @@ const heroCifras = [
           ))}
         </ul>
         <div class="hero__cta">
-          <CtaWhatsApp texto={hero.cta} contexto="piloto" testid="cta-hero" />
+          <CtaWhatsApp texto={hero.cta} testid="cta-hero" />
         </div>
         <p class="hero__bajada">{hero.bajada}</p>
       </div>
@@ -93,19 +93,19 @@ const heroCifras = [
           ))}
         </tbody>
       </table>
-      <div class="comp__cta"><CtaWhatsApp texto={hero.cta} contexto="piloto" /></div>
+      <div class="comp__cta"><CtaWhatsApp texto={hero.cta} /></div>
     </div>
   </section>
 
   <!-- TECNOLOGIA -->
   <section class="section" id="tecnologia" aria-labelledby="tec-titulo" data-seccion="tecnologia">
     <div class="container">
-      <span class="eyebrow">Respaldo I+D</span>
+      <span class="eyebrow">Tecnología</span>
       <h2 id="tec-titulo">{tecnologia.titulo}</h2>
       <p class="lead">{tecnologia.bajada}</p>
       <div class="tec__grid">
         <Media
-          src={videos.mvp || media.tecnologia}
+          src={videos.demo || media.tecnologia}
           alt="Video demostrativo del rover AutoTopo en operación"
           esquema="rover"
         />
@@ -136,7 +136,7 @@ const heroCifras = [
   <section class="section" id="equipo" aria-labelledby="eq-titulo" data-seccion="equipo">
     <div class="container">
       <span class="eyebrow">Quiénes somos</span>
-      <h2 id="eq-titulo">{equipo.titulo} <span class="badge badge--accent" data-testid="female-led">Female-led</span></h2>
+      <h2 id="eq-titulo">{equipo.titulo}</h2>
       <p class="lead">{equipo.bajada}</p>
       <ul class="grid grid--3 equipo">
         {equipo.personas.map((p) => (
@@ -146,18 +146,10 @@ const heroCifras = [
           </li>
         ))}
       </ul>
-      <aside class="ignite-banner" data-testid="banner-ignite">
-        <div>
-          <strong>Postulación Start-Up Chile Ignite · CORFO</strong>
-          <p class="muted">Hoja de ruta, KPIs del programa, mercado y aporte al ecosistema chileno.</p>
-        </div>
-        <a class="btn btn--ghost" href="/ignite/" data-testid="link-ignite-respaldo">Ver presentación Ignite →</a>
-      </aside>
     </div>
   </section>
 
   <Contacto
-    contexto="piloto"
     titulo="Probemos AutoTopo en su faena"
     bajada="Coordinemos un piloto operativo en su parque solar. Le respondemos directamente por WhatsApp o por correo."
     cta={hero.cta}
@@ -220,8 +212,5 @@ const heroCifras = [
   .persona h3 { margin: 0; font-size: var(--fs-md); }
   .persona p { margin: 0; font-size: var(--fs-sm); }
   .persona__avatar { flex: none; width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; font-weight: 800; background: linear-gradient(135deg, var(--c-accent), #e07b00); color: var(--c-accent-ink); }
-  h2 .badge { vertical-align: middle; margin-left: var(--sp-2); }
 
-  .ignite-banner { margin-top: var(--sp-6); display: flex; flex-wrap: wrap; gap: var(--sp-4); align-items: center; justify-content: space-between; padding: var(--sp-5); border: 1px dashed var(--c-accent); border-radius: var(--radius); background: rgba(245, 166, 35, 0.06); }
-  .ignite-banner p { margin: var(--sp-1) 0 0; font-size: var(--fs-sm); }
 </style>

@@ -5,7 +5,7 @@ const texto = z.string().min(1);
 const item = z.object({ titulo: texto, texto: texto });
 
 const Esquema = z.object({
-  marca: z.object({ nombre: texto, dominio: z.string().url(), pitch7: texto, descripcion: texto }),
+  marca: z.object({ nombre: texto, dominio: z.string().url(), lema: texto, descripcion: texto }),
   cifras: z.object({
     precision: z.literal('8 mm', { errorMap: () => ({ message: 'La precisión canónica es "8 mm" (nunca 3 mm).' }) }),
     precisionDetalle: texto.refine((s) => s.includes('8 mm') && !/\b3\s*(-|–)?\s*\d*\s*mm/.test(s), 'Debe decir 8 mm'),
@@ -15,9 +15,6 @@ const Esquema = z.object({
     capexDetalle: texto,
     puntosPor100MW: z.literal('50.000+'),
     cuadrilla: z.literal('6 a 9'),
-    trl: z.literal('TRL 6'),
-    trlMeta: z.literal('TRL 8'),
-    idInversion: texto,
     supervision: texto,
     proteccion: texto,
   }),
@@ -25,7 +22,7 @@ const Esquema = z.object({
     whatsapp: z.string().regex(/^(\d{8,15}|PENDIENTE_WHATSAPP_COMERCIAL)$/, 'WhatsApp: solo dígitos con código de país (ej. 569XXXXXXXX)'),
     correo: z.string().email(),
     mensajePiloto: texto,
-    mensajeIgnite: texto,
+    asuntoCorreo: texto,
   }),
   hero: z.object({ titulo: texto, bajada: texto, cta: texto }),
   problema: z.object({
@@ -49,21 +46,7 @@ const Esquema = z.object({
     bajada: texto,
     personas: z.array(z.object({ nombre: texto, rol: texto, iniciales: texto })).length(3),
   }),
-  ignite: z.object({
-    tesis: texto,
-    estado: z.array(z.object({ cifra: texto, texto: texto })).min(3),
-    competencia: z.array(z.object({ nombre: texto, tipo: texto, ventaja: texto })).length(3),
-    mercado: z
-      .array(z.object({ sigla: z.enum(['TAM', 'SAM', 'SOM']), valor: texto, millones: z.number().positive(), texto: texto }))
-      .length(3)
-      .refine((m) => m[0].millones > m[1].millones && m[1].millones > m[2].millones, 'Debe cumplirse TAM > SAM > SOM'),
-    hojaRuta: z.array(z.object({ periodo: texto, hito: texto, lugar: texto, texto: texto })).min(3),
-    actividades: z.array(item).min(3),
-    kpis: z.array(z.object({ area: texto, texto: texto })).min(3),
-    ecosistema: z.array(item).min(3),
-    modelo: z.array(item).min(2),
-  }),
-  videos: z.object({ pitch: z.string().url().or(z.literal('')), mvp: z.string().url().or(z.literal('')) }),
+  videos: z.object({ demo: z.string().url().or(z.literal('')) }),
   media: z.object({ hero: z.string(), tecnologia: z.string() }),
 });
 

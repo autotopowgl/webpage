@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 // Revisa el sitio construido (dist/) y falla si encuentra contenido prohibido
 // según specs/contenido-publico: datos personales, márgenes internos,
-// precisiones distintas de 8 mm o el marcador de WhatsApp sin configurar.
+// precisiones distintas de 8 mm, el marcador de WhatsApp sin configurar o
+// referencias a postulaciones (el sitio es la web de la empresa, no un pitch).
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join, extname, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -15,6 +16,7 @@ const reglas = [
   { nombre: 'Precisión distinta de 8 mm (3 mm / 3-8 mm)', re: /\b3\s*(?:-|–|a)?\s*\d*\s*mm\b/i },
   { nombre: 'Margen interno', re: /\bm[aá]rgen(?:es)?\b/i, soloTexto: true },
   { nombre: 'Porcentaje 80%', re: /\b80\s*%/, soloTexto: true },
+  { nombre: 'Referencia a postulación (Start-Up Chile / Ignite / CORFO)', re: /\bstart-?up\b|\bignite\b|\bcorfo\b|postulaci[oó]n/i, soloTexto: true },
   { nombre: 'WhatsApp comercial sin configurar', re: /PENDIENTE_WHATSAPP_COMERCIAL/ },
   ...literales.map((l) => ({ nombre: `Dato personal (${l.slice(0, 3)}…)`, re: new RegExp(l.replace(/[.*+?^${}()|[\]\\/]/g, '\\$&'), 'i') })),
 ];

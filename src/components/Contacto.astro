@@ -3,10 +3,9 @@ import CtaWhatsApp from './CtaWhatsApp.astro';
 import { contenido } from '../lib/contenido';
 import { enlaceCorreo } from '../lib/enlaces';
 
-interface Props { contexto: 'piloto' | 'ignite'; titulo: string; bajada: string; cta: string }
-const { contexto, titulo, bajada, cta } = Astro.props;
+interface Props { titulo: string; bajada: string; cta: string }
+const { titulo, bajada, cta } = Astro.props;
 const { contacto } = contenido;
-const asunto = contexto === 'ignite' ? 'AutoTopo · Start-Up Chile Ignite' : 'AutoTopo · Piloto en faena';
 ---
 <section class="section contacto" id="contacto" aria-labelledby="contacto-titulo">
   <div class="container contacto__inner">
@@ -14,8 +13,8 @@ const asunto = contexto === 'ignite' ? 'AutoTopo · Start-Up Chile Ignite' : 'Au
     <h2 id="contacto-titulo">{titulo}</h2>
     <p class="lead">{bajada}</p>
     <div class="contacto__acciones">
-      <CtaWhatsApp texto={cta} contexto={contexto} testid="cta-contacto" />
-      <a class="btn btn--ghost" href={enlaceCorreo(contacto.correo, asunto)} data-testid="cta-correo">
+      <CtaWhatsApp texto={cta} testid="cta-contacto" />
+      <a class="btn btn--ghost" href={enlaceCorreo(contacto.correo, contacto.asuntoCorreo)} data-testid="cta-correo">
         <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M3 6h18v12H3z M3 6l9 7 9-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
         {contacto.correo}
       </a>

@@ -5,10 +5,10 @@ import { contenido } from '../lib/contenido';
 interface Props {
   titulo: string;
   descripcion: string;
-  ruta: '/' | '/ignite/';
+  ruta: '/';
 }
 const { titulo, descripcion, ruta } = Astro.props;
-const { marca } = contenido;
+const { marca, contacto } = contenido;
 const canonical = new URL(ruta, marca.dominio).href;
 ---
 <!doctype html>
@@ -38,10 +38,10 @@ const canonical = new URL(ruta, marca.dominio).href;
           <span>Auto<strong>Topo</strong></span>
         </a>
         <nav aria-label="Principal" class="nav__links">
-          <a href="/#contacto" class="nav__link" data-testid="nav-piloto">Piloto</a>
-          <a href="/ignite/" class="nav__link nav__link--ignite" data-testid="nav-ignite" aria-current={ruta === '/ignite/' ? 'page' : undefined}>
-            <span class="nav__long">Start-Up Chile </span>Ignite
-          </a>
+          <a href="/#como-opera" class="nav__link nav__link--sec">Servicio</a>
+          <a href="/#tecnologia" class="nav__link nav__link--sec">Tecnología</a>
+          <a href="/#equipo" class="nav__link nav__link--sec">Equipo</a>
+          <a href="/#contacto" class="nav__link nav__link--cta" data-testid="nav-piloto">Contacto</a>
         </nav>
       </div>
     </header>
@@ -50,8 +50,8 @@ const canonical = new URL(ruta, marca.dominio).href;
     </main>
     <footer class="footer">
       <div class="container footer__inner">
-        <p><strong>{marca.nombre}</strong>: {marca.pitch7}</p>
-        <p class="muted">Ingeniería robótica hecha en Chile — <a href="/ignite/">Postulación Start-Up Chile Ignite</a></p>
+        <p><strong>{marca.nombre}</strong>: {marca.lema}</p>
+        <p class="muted">Empresa en formación · Ingeniería robótica hecha en Chile · <a href={`mailto:${contacto.correo}`}>{contacto.correo}</a></p>
         <p class="muted">© {new Date().getFullYear()} {marca.nombre}</p>
       </div>
     </footer>
@@ -68,9 +68,9 @@ const canonical = new URL(ruta, marca.dominio).href;
   .nav__links { display: flex; gap: var(--sp-2); align-items: center; }
   .nav__link { color: var(--c-text); text-decoration: none; font-weight: 600; font-size: var(--fs-sm); padding: 8px 12px; border-radius: 999px; min-height: 40px; display: inline-flex; align-items: center; }
   .nav__link:hover { color: var(--c-accent-strong); }
-  .nav__link--ignite { border: 1px solid var(--c-accent); color: var(--c-accent-strong); }
-  .nav__long { display: none; }
-  @media (min-width: 560px) { .nav__long { display: inline; white-space: pre; } }
+  .nav__link--cta { border: 1px solid var(--c-accent); color: var(--c-accent-strong); }
+  .nav__link--sec { display: none; }
+  @media (min-width: 700px) { .nav__link--sec { display: inline-flex; } }
   .footer { border-top: 1px solid var(--c-border); padding-block: var(--sp-6); font-size: var(--fs-sm); }
   .footer p { margin-bottom: var(--sp-2); }
 </style>
