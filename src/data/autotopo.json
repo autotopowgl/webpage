@@ -14,7 +14,7 @@
     "capexDetalle": "0% CAPEX: servicio 100% OPEX",
     "puntosPor100MW": "50.000+",
     "cuadrilla": "6 a 9",
-    "supervision": "1 operador : 3–5 rovers",
+    "supervision": "1 operador : 1 rover por proyecto",
     "proteccion": "IP65 / IP67"
   },
   "contacto": {
@@ -71,7 +71,7 @@
       {
         "criterio": "Personal expuesto al sol",
         "manual": "6 a 9 personas a pie",
-        "autotopo": "1 operador supervisando 3 a 5 rovers"
+        "autotopo": "1 operador supervisando un rover para el proyecto"
       },
       {
         "criterio": "Precisión",
